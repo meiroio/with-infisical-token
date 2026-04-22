@@ -1,0 +1,21 @@
+{
+  "name": "with-infisical-token",
+  "version": "0.1.0",
+  "private": true,
+  "description": "GitHub Action for exporting Infisical secrets with a service token.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "ncc build src/main.js -o dist",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@actions/core": "^1.11.1"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.38.4"
+  }
+}

@@ -1,0 +1,57 @@
+name: "With Infisical Token"
+description: "Fetch Infisical secrets with a service token and export them to the workflow environment."
+author: "Meiro"
+inputs:
+  token:
+    description: "Infisical service token. Falls back to INFISICAL_TOKEN."
+    required: false
+  project-id:
+    description: "Infisical project ID. Falls back to INFISICAL_PROJECT_ID."
+    required: false
+  env-slug:
+    description: "Infisical environment slug. Falls back to INFISICAL_ENV_SLUG."
+    required: false
+  secret-path:
+    description: "Infisical secret path. Falls back to INFISICAL_SECRET_PATH and defaults to /."
+    required: false
+  api-url:
+    description: "Infisical base URL. Falls back to INFISICAL_API_URL."
+    required: false
+  recursive:
+    description: "Fetch secrets recursively from the selected path."
+    required: false
+  include-imports:
+    description: "Include imported secrets."
+    required: false
+  expand-secret-references:
+    description: "Expand Infisical secret references."
+    required: false
+  include-personal-overrides:
+    description: "Include personal overrides."
+    required: false
+  metadata-filter:
+    description: "Optional metadata filter passed through to Infisical."
+    required: false
+  tag-slugs:
+    description: "Optional comma-separated tag slugs passed through to Infisical."
+    required: false
+  keep-infisical-env:
+    description: "Also export INFISICAL_* variables for later workflow steps."
+    required: false
+  app-env-slug:
+    description: "Optional INFISICAL_APP_ENV_SLUG value exported when keep-infisical-env is true."
+    required: false
+  app-secret-path:
+    description: "Optional INFISICAL_APP_SECRET_PATH value exported when keep-infisical-env is true."
+    required: false
+outputs:
+  secret-count:
+    description: "Number of exported secrets after imports/direct values are merged."
+  secret-keys-json:
+    description: "JSON array of exported secret keys."
+runs:
+  using: "node20"
+  main: "dist/index.js"
+branding:
+  color: "blue"
+  icon: "lock"
