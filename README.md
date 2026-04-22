@@ -17,7 +17,7 @@ Unlike the shell wrapper, this action does not depend on `curl` or `jq` being in
 
 ```yaml
 - name: Load deploy secrets
-  uses: meiro/with-infisical-token@v1
+  uses: meiroio/with-infisical-token@v1
   with:
     token: ${{ secrets.INFISICAL_TOKEN }}
     project-id: ${{ vars.INFISICAL_PROJECT_ID }}
@@ -42,7 +42,7 @@ Unlike the shell wrapper, this action does not depend on `curl` or `jq` being in
 
 ```yaml
 - name: Load deploy + app secrets
-  uses: meiro/with-infisical-token@v1
+  uses: meiroio/with-infisical-token@v1
   with:
     token: ${{ secrets.INFISICAL_TOKEN }}
     project-id: ${{ vars.INFISICAL_PROJECT_ID }}
