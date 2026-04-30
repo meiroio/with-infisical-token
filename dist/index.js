@@ -27404,16 +27404,11 @@ function readSecretEntries(response) {
 }
 
 function normalizeSecretPath(secretPath = "/") {
-  if (secretPath === "/") {
-    return secretPath;
+  if (!secretPath) {
+    return "/";
   }
 
-  let normalized = secretPath;
-  while (normalized.startsWith("/") && normalized !== "/") {
-    normalized = normalized.slice(1);
-  }
-
-  return normalized || "/";
+  return "/" + secretPath.replace(/^\/+/, "");
 }
 
 function collectSecrets(response) {

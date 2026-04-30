@@ -79,7 +79,7 @@ test("runAction fetches secrets and exports them for downstream workflow steps",
     INFISICAL_APP_SECRET_PATH: "/app",
     INFISICAL_ENV_SLUG: "prod",
     INFISICAL_PROJECT_ID: "project-id",
-    INFISICAL_SECRET_PATH: "github-workflows",
+    INFISICAL_SECRET_PATH: "/github-workflows",
     INFISICAL_TOKEN: "token-value",
     SHARED: "direct"
   });
@@ -88,7 +88,7 @@ test("runAction fetches secrets and exports them for downstream workflow steps",
     "secret-count": "2",
     "secret-keys-json": JSON.stringify(["API_KEY", "SHARED"])
   });
-  assert.match(infoLogs.join("\n"), /Fetching Infisical secrets from env=prod path=github-workflows/);
+  assert.match(infoLogs.join("\n"), /Fetching Infisical secrets from env=prod path=\/github-workflows/);
 });
 
 test("runAction does not blank inherited Infisical config for later workflow steps", async () => {
