@@ -5,16 +5,11 @@ function readSecretEntries(response) {
 }
 
 export function normalizeSecretPath(secretPath = "/") {
-  if (secretPath === "/") {
-    return secretPath;
+  if (!secretPath) {
+    return "/";
   }
 
-  let normalized = secretPath;
-  while (normalized.startsWith("/") && normalized !== "/") {
-    normalized = normalized.slice(1);
-  }
-
-  return normalized || "/";
+  return "/" + secretPath.replace(/^\/+/, "");
 }
 
 export function collectSecrets(response) {

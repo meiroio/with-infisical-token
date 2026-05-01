@@ -10,11 +10,14 @@ import {
   normalizeSecretPath
 } from "../src/infisical.js";
 
-test("normalizeSecretPath preserves root and strips other leading slashes", () => {
+test("normalizeSecretPath ensures exactly one leading slash", () => {
   assert.equal(normalizeSecretPath("/"), "/");
-  assert.equal(normalizeSecretPath("/app"), "app");
-  assert.equal(normalizeSecretPath("///nested/path"), "nested/path");
+  assert.equal(normalizeSecretPath("/app"), "/app");
+  assert.equal(normalizeSecretPath("app"), "/app");
+  assert.equal(normalizeSecretPath("///nested/path"), "/nested/path");
+  assert.equal(normalizeSecretPath("nested/path"), "/nested/path");
   assert.equal(normalizeSecretPath(""), "/");
+  assert.equal(normalizeSecretPath(), "/");
 });
 
 test("collectSecrets merges imports before direct secrets and stringifies values", () => {
@@ -92,7 +95,7 @@ test("buildSecretsRequest encodes Infisical query params the same way as the she
   const params = new URLSearchParams(request.query);
   assert.equal(params.get("projectId"), "project-id");
   assert.equal(params.get("environment"), "prod");
-  assert.equal(params.get("secretPath"), "github-workflows");
+  assert.equal(params.get("secretPath"), "/github-workflows");
   assert.equal(params.get("viewSecretValue"), "true");
   assert.equal(params.get("expandSecretReferences"), "true");
   assert.equal(params.get("recursive"), "true");
