@@ -97,6 +97,8 @@ If your workflow already exports `INFISICAL_TOKEN`, `INFISICAL_PROJECT_ID`, `INF
 
 ## Development
 
+Node.js 24 or later is required for local development.
+
 ```bash
 npm install
 npm test

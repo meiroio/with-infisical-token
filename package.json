@@ -5,7 +5,7 @@
   "description": "GitHub Action for exporting Infisical secrets with a service token.",
   "type": "module",
   "engines": {
-    "node": ">=20"
+    "node": ">=24"
   },
   "main": "dist/index.js",
   "scripts": {

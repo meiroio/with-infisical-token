@@ -50,7 +50,7 @@ outputs:
   secret-keys-json:
     description: "JSON array of exported secret keys."
 runs:
-  using: "node20"
+  using: "node24"
   main: "dist/index.js"
 branding:
   color: "blue"
